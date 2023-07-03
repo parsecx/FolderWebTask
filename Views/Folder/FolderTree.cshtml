@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@model FolderTreeTask.Models.FolderModel
+@{
+    <h1>@Model.Current.Name - current folder.</h1>
+}
+
+<div>
+        @{
+            if (Model.Children.Count != 0)
+            {
+                foreach (var item in Model.Children)
+                {
+                    <p>
+                        <a href="@Url.Action("FolderTree", "Folder", new {currentFolderId = item.FolderId})" style="color:blue">
+                            <span>@item.Name</span>
+                        </a>
+                    </p>
+                }
+                
+            }
+            else
+            {
+                <a style="color:blue">No subfolders in this folder!</a>
+            }
+        }
+
+</div>
